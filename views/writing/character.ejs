@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= character.character_name %> | Lorelei's Site</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <%- include("../partials/header") %>
+        <main>
+            <section>
+                <div id="content">
+                    <div id="title" class="areas">
+                        <h2><%= character.character_name %></h2>
+                        <p><%= character.story_name %></p>
+                    </div>
+                    <section id="physical-description" class="areas">
+                        <h3>Physical Description</h3>
+                        <ul>
+                            <li>Age: <span id="character-age"></span></li>
+                            <li>Species: <span id="character-species"></span></li>
+                            <li>Gender: <span id="character-gender"></span></li>
+                            <li>Appearance: <span id="character-appearance"></span></li>
+                        <li>Clothes & Equipment:<ul id="character-equipment"></ul></li>
+                        </ul>
+                    </section>
+                    <section id="personality" class="areas">
+                        <h3>Personality</h3>
+                        <ul>
+                            <li>Archetypes: <span="character-archetypes"></span></li>
+                            <li>Goals: <span id="character-goals"></span></li>
+                            <li>Secrets: <span id="character-secrets"></span></li>
+                            <li>Fears: <span id="character-fears"></span></li>
+                            <li>Flaws: <span id="character-flaws"></span></li>
+                        </ul>
+                    </section>
+                    <div id="picture" class="areas">
+                        <canvas id="sigil">placeholder</canvas>
+                    </div>
+                    <section id="related" class="areas">
+                        <h3>Related Characters</h3>
+                    </section>
+                </div>
+            </section>
+        </main>
+        <footer></footer>
+    </body>
+</html>

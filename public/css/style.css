@@ -1,0 +1,77 @@
+* {
+    font-family: sans-serif;
+}
+
+header {
+    display: flex;
+}
+
+nav {
+    width: stretch;
+    align-content: center;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+}
+
+A {
+    color: black;
+    text-decoration: none;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: auto auto 25%;
+    grid-template-areas: "title title title"
+                         "phys pers pic"
+                         "phys pers pic"
+                         "phys pers rel";
+    gap: 2em;
+}
+
+.areas {
+    border: 5px solid black;
+    border-radius: 5%;
+    padding: 1.1em;
+}
+
+.areas h3 {
+    text-align: center;
+}
+
+#title {
+    grid-area: title;
+}
+
+#physical-description {
+    grid-area: phys;
+}
+
+#personality {
+    grid-area: pers;
+}
+
+#picture {
+    grid-area: pic;
+}
+
+#related {
+    grid-area: rel;
+}
+
+#sigil {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+#hormone-input-form {
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+}
+
+canvas {
+    border: 5px solid black;
+}

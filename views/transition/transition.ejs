@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Transition Tracker | Lorelei's Site</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/js/transition/transition.js" defer></script>
+    </head>
+    <body>
+        <%- include("../partials/header") %>
+        <main>
+            <section>
+                <h2>Transition Tracker</h2>
+                <canvas id="graph">Something broke</canvas>
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Estrogen</th>
+                        <th>Testosterone</th>
+                    </tr>
+                    <% for (i in rows) { %>
+                        <tr>
+                            <td><%= rows[i].date %></td>
+                            <td><%= rows[i].estrogen %></td>
+                            <td><%= rows[i].testosterone %></td>
+                        </tr>
+                    <% } %>
+                </table>
+                <a href="/transition/hormone-input">
+                    <button>Add Hormone Levels</button>
+                </a>
+                <section>
+                    <h3>To Do</h3>
+                    <ul>
+                        <li>Surgery progress bars</li>
+                        <li>FFS consult countdown</li>
+                        <li>Milan payment tracker</li>
+                    </ul>
+                </section>
+            </section>
+        </main>
+        <footer></footer>
+    </body>
+</html>

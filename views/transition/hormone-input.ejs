@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add Hormone Levels | Lorelei's Site</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <%- include("../partials/header") %>
+        <main>
+            <section>
+                <h2>Add Hormone Levels</h2>
+                <form method="POST" id="hormone-input-form">
+                    <label for="hrtDate">Date</label>
+                    <label for="estrogen">Estrogen</label>
+                    <label for="testosterone">Testosterone</label>
+                    <input type="date" name="date" id="date">
+                    <input type="text" name="estrogen" id="estrogen">
+                    <input type="text" name="testosterone" id="testosterone">
+                    <input type="submit" value="Add">
+                </form>
+            </section>
+        </main>
+        <footer></footer>
+    </body>
+</html>

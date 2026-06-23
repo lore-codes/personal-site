@@ -1,0 +1,20 @@
+Character name
+Story
+Physical description
+    Age
+    Race
+    Appearance
+    Clothing and equipment
+Personality:
+    Archetypes
+    Goals
+    Secrets
+    Flaws
+    Fears
+Related characters
+
+Layout:
+name    name    name
+Phys    pers    pic
+phys    pers    pic
+phys    pers    rels

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Characters | Lorelei's Site</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <%- include("../partials/header") %>
+        <main>
+            <section>
+                <h2>Characters</h2>
+                <ul>
+                    <% for (let i in characters) { %>
+                        <li>
+                            <a href=<%= "/writing/character/" + characters[i].character_id %>><%= characters[i].character_name %></a>
+                        </li>
+                    <% } %>
+                </ul>
+                <% if (characters.length == 0) { %>
+                    <p>There aren't any characters here yet.</p>
+                    <a href="/writing/character-creator">Create New Character</a>
+                    <% } %>
+            </section>
+        </main>
+        <footer></footer>
+    </body>
+</html>
