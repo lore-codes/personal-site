@@ -75,3 +75,17 @@ A {
 canvas {
     border: 5px solid black;
 }
+
+#consult-countdown {
+    display: block;
+    font-size: 2em;
+}
+
+#estrogen-day-count {
+    display: block;
+    font-size: 3em;
+}
+
+.progress-bar {
+    border-radius: 5%;
+}

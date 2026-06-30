@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Transition Tracker | Lorelei's Site</title>
+        <title>Transition Dashboard | Lorelei's Site</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="/css/style.css">
         <script src="/js/transition/transition.js" defer></script>
@@ -10,30 +10,45 @@
         <%- include("../partials/header") %>
         <main>
             <section>
-                <h2>Transition Tracker</h2>
-                <canvas id="graph">Something broke</canvas>
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Estrogen</th>
-                        <th>Testosterone</th>
-                    </tr>
-                    <% for (i in rows) { %>
+                <h2>Transition Dashboard</h2>
+                <section>
+                    <h3>Hormone Tracker</h3>
+                    <canvas id="graph">Something broke</canvas>
+                    <table>
                         <tr>
-                            <td><%= rows[i].date %></td>
-                            <td><%= rows[i].estrogen %></td>
-                            <td><%= rows[i].testosterone %></td>
+                            <th>Date</th>
+                            <th>Estrogen</th>
+                            <th>Testosterone</th>
                         </tr>
-                    <% } %>
-                </table>
-                <a href="/transition/hormone-input">
-                    <button>Add Hormone Levels</button>
-                </a>
+                        <% for (i in rows) { %>
+                            <tr>
+                                <td><%= rows[i].date %></td>
+                                <td><%= rows[i].estrogen %></td>
+                                <td><%= rows[i].testosterone %></td>
+                            </tr>
+                        <% } %>
+                    </table>
+                    <a href="/transition/hormone-input">
+                        <button>Add Hormone Levels</button>
+                    </a>
+                    </section>
+                    <section>
+                        <h3>FFS Consult Countdown</h3>
+                        <p><strong id="consult-countdown"></strong> until FFS consult</p>
+                    </section>
+                    <section>
+                        <h3>Status</h3>
+                        <p><strong id="estrogen-day-count"></strong> days on estrogen</p>
+                        <canvas id="ffs-progress" class="progress-bar"></canvas>
+                        <canvas id="vaginoplasty-progress" class="progress-bar"></canvas>
+                        <canvas id="vocal-progress" class="progress-bar"></canvas>
+                        <canvas id="legal-progress" class="progress-bar"></canvas>
+                    </section>
                 <section>
                     <h3>To Do</h3>
                     <ul>
                         <li>Surgery progress bars</li>
-                        <li>FFS consult countdown</li>
+                        <li>Legal transition checklist</li>
                         <li>Milan payment tracker</li>
                     </ul>
                 </section>

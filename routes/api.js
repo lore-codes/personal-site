@@ -3,10 +3,17 @@ const router = express.Router();
 const pool = require("../db");
 
 router.get("/transition", async (req, res) => {
-    const result = await pool.query(
+    const hormoneData = await pool.query(
         "SELECT * FROM hormones"
     );
-    res.json(result.rows);
+    const taskData = await pool.query(
+        "SELECT * FROM legal_tasks"
+    );
+    console.log("We only made it this far");
+    res.json({
+        hormoneData: hormoneData,
+        taskData: taskData
+    });
 });
 
 module.exports = router;

@@ -4,6 +4,7 @@
         <title>Character Creator | Lorelei's Site</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="/css/style.css">
+        <script type="text/javascript" src="/js/writing/character-creator.js" defer></script>
     </head>
     <body>
         <%- include("../partials/header") %>
@@ -25,6 +26,38 @@
                                 <% } %>
                             </select>
                         </div>
+                        <section>
+                            <h4>Age</h4>
+                            <label for="child">Child</label>
+                            <input type="radio" name="age" id="child" value="child">
+                            <label for="young-adult">Young Adult</label>
+                            <input type="radio" name="age" id="young-adult" value="Young Adult">
+                            <label for="adult">Adult</label>
+                            <input type="radio" name="age" id="adult" value="Adult">
+                            <label for="middle-aged">Middle Aged</label>
+                            <input type="radio" name="age" id="middle-aged" value="Middle Aged">
+                            <label for="elderly">Elderly</label>
+                            <input type="radio" name="age" id="elderly" value="Elderly">
+                        </section>
+                        <div>
+                            <label for="species">Species</label>
+                            <input list="species-list" name="species" id="species">
+                            <datalist id="species-list">
+                                <option value="Human">
+                                <option value="Elf">
+                                <option value="Dwarf">
+                            </datalist>
+                        </div>
+                        <section>
+                            <h4>Gender</h4>
+                            <input type="radio" name="gender" id="female" value="Female">
+                            <label for="female">Female</label>
+                            <input type="radio" name="gender" id="male" value="Male">
+                            <label for="male">Male</label>
+                            <input type="radio" name="gender" id="other-gender" value="other">
+                            <label for="other-gender">Other</label>
+                            <input type="text" name="othergendertext" id="othergendertext" hidden>
+                        </section>
                     </div>
                     <input type="submit" value="Submit">
                 </form>

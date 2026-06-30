@@ -1,18 +1,43 @@
-window.addEventListener("load", graph);
+window.addEventListener("load", () => {
+    console.log("Triggered load event");
+    graph();
+    updateHRTDayCount();
+    drawProgressBars();
+    setInterval(() => {
+        updateConsultCountdown();
+    }, 1);
+});
 window.addEventListener("resize", graph);
 
 async function graph() {
+    console.log("entered graph()");
     let canvas = document.getElementById("graph");
     let width = document.querySelector("main").clientWidth / 4;
-    const data = await getData();
+    const data = await getData("hormones");
     const coordinates = getCoordinates(data, width);    
     canvas.innerHTML = updateAltText(data);
     draw(canvas, width, coordinates);
 }
 
-async function getData() {
+async function getData(table) {
+    console.log("entered getData()");
     const response = await fetch("/api/transition");
-    const result = await response.json();
+    console.log("received response");
+    const jsonData = await response.json();
+    console.log("extracted JSON");
+    console.log(jsonData);
+    console.log(jsonData.hormoneData);
+    let result;
+    switch (table) {
+        case "hormones" : {
+            result = jsonData.hormoneData.rows;
+            break;
+        }
+        case "tasks" : {
+            result = jsonData.taskData.rows;
+            break;
+        }
+    }
     return result;
 }
 
@@ -28,7 +53,7 @@ function getXVals(data, width) {
     for (let row of data) {
         row = row.date;
         row = row.split("-");
-        row = new Date(row[0], row[1], row[2]);
+        row = new Date(row[0], row[1] - 1, row[2]);
         row = (((row.getTime() / 1000) / 60) / 60);
         dates.push(row);
     }
@@ -130,4 +155,37 @@ function drawLine(c, x1, y1, x2, y2, color) {
     c.lineWidth = 5;
     c.strokeStyle = color;
     c.stroke();
+}
+
+function updateConsultCountdown() {
+    let resultArea = document.getElementById("consult-countdown");
+    let currentDate = new Date();
+    let consultDate = new Date(2026, 10, 28);
+    let difference = 0;
+    let countdown;
+
+    difference = consultDate.getTime() - currentDate.getTime();
+    countdown = (difference % 1000) + "ms";
+    difference = Math.floor(difference / 1000);
+    countdown = (difference % 60) + "s " + countdown;
+    difference = Math.floor(difference / 60);
+    countdown = (difference % 60) + "m " + countdown;
+    difference = Math.floor(difference / 60);
+    countdown = (difference % 24) + "h " + countdown;
+    difference = Math.floor(difference / 24);
+    countdown = difference + "d " + countdown;
+
+    resultArea.innerHTML = countdown;
+}
+
+function updateHRTDayCount() {
+    let estrogenArea = document.getElementById("estrogen-day-count");
+    let startDate = new Date(2025, 6, 5);
+    let currentDate = new Date();
+
+    estrogenArea.innerHTML = Math.floor(((((currentDate.getTime() - startDate.getTime()) / 1000) / 60) / 60) / 24);
+}
+
+function drawProgressBars() {
+
 }
