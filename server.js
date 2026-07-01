@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
+
 const pagesRouter = require("./routes/pages");
 const programmingRouter = require("./routes/programming");
 const transitionRouter = require("./routes/transition");
@@ -16,6 +18,7 @@ app.use("/transition", transitionRouter);
 app.use("/writing", writingRouter);
 app.use("/api", apiRouter);
 
-app.listen(3000, () => {
+const port = process.env.PORT;
+app.listen(port, () => {
     console.log("server running on port 3000")
 });
