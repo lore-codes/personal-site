@@ -19,6 +19,6 @@ app.use("/writing", writingRouter);
 app.use("/api", apiRouter);
 
 const port = process.env.PORT;
-app.listen(port, "3.143.243.28", () => {
-    console.log("server running on port 3000")
+app.listen(port, () => {
+    console.log("server running on port ${port}")
 });
