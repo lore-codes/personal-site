@@ -7,7 +7,7 @@ router.get("/transition", async (req, res) => {
         "SELECT * FROM hormones"
     );
     const taskData = await pool.query(
-        "SELECT * FROM legal_tasks"
+        "SELECT * FROM transition_tasks"
     );
     console.log("We only made it this far");
     res.json({
