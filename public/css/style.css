@@ -78,14 +78,60 @@ canvas {
 
 #consult-countdown {
     display: block;
-    font-size: 2em;
+    font-size: 3em;
 }
 
 #estrogen-day-count {
     display: block;
-    font-size: 3em;
+    font-size: 6em;
 }
 
 .progress-bar {
-    border-radius: 5%;
+    border-radius: 2em;
+}
+
+#progress-bars {
+    text-align: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-template-areas: "label0 progressBar0"
+                        "label1 progressBar1"
+                        "label2 progressBar2"
+                        "label3 progressBar3";
+    gap: 2em;
+}
+
+#hormone-tracker-area {
+    grid-area: hor;
+}
+
+#progress-bar-area {
+    grid-area: pro;
+}
+
+#transition-counters {
+    grid-area: cou;
+    text-align: center;
+}
+
+#to-do {
+    grid-area: tod;
+}
+
+#transition-content {
+    display: grid;
+    grid-template-columns: 25% auto auto;
+    grid-template-areas: "hor pro cou"
+                         "hor pro tod";
+    gap: 2em;
+}
+
+/*#transition-content > * {
+    border: 5px solid black;
+    border-radius: 2em;
+}*/
+
+#transition-content h3 {
+    text-align: center;
 }

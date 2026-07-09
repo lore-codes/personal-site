@@ -2,17 +2,17 @@ window.addEventListener("load", () => {
     console.log("Triggered load event");
     graph();
     updateHRTDayCount();
-    drawProgressBars();
+    setProgressBars();
     setInterval(() => {
         updateConsultCountdown();
-    }, 1);
+    }, 1000);
 });
 window.addEventListener("resize", graph);
 
 async function graph() {
     console.log("entered graph()");
     let canvas = document.getElementById("graph");
-    let width = document.querySelector("main").clientWidth / 4;
+    let width = document.querySelector("#hormone-tracker-area").clientWidth;
     const data = await getData("hormones");
     const coordinates = getCoordinates(data, width);    
     canvas.innerHTML = updateAltText(data);
@@ -20,13 +20,8 @@ async function graph() {
 }
 
 async function getData(table) {
-    console.log("entered getData()");
     const response = await fetch("/api/transition");
-    console.log("received response");
     const jsonData = await response.json();
-    console.log("extracted JSON");
-    console.log(jsonData);
-    console.log(jsonData.hormoneData);
     let result;
     switch (table) {
         case "hormones" : {
@@ -160,14 +155,14 @@ function drawLine(c, x1, y1, x2, y2, color) {
 function updateConsultCountdown() {
     let resultArea = document.getElementById("consult-countdown");
     let currentDate = new Date();
-    let consultDate = new Date(2026, 10, 28);
+    let consultDate = new Date(2026, 9, 28);
     let difference = 0;
     let countdown;
 
     difference = consultDate.getTime() - currentDate.getTime();
-    countdown = (difference % 1000) + "ms";
+    /* countdown = (difference % 1000) + "ms";*/
     difference = Math.floor(difference / 1000);
-    countdown = (difference % 60) + "s " + countdown;
+    countdown = (difference % 60) + "s";
     difference = Math.floor(difference / 60);
     countdown = (difference % 60) + "m " + countdown;
     difference = Math.floor(difference / 60);
@@ -186,6 +181,79 @@ function updateHRTDayCount() {
     estrogenArea.innerHTML = Math.floor(((((currentDate.getTime() - startDate.getTime()) / 1000) / 60) / 60) / 24);
 }
 
-function drawProgressBars() {
+async function setProgressBars() {
+    const data = await getData("tasks");
+    const progress = calculateProgress(data);
+    drawProgressBars(progress);
+}
 
+function calculateProgress(data) {
+    const progress = [];
+    let completed = [0, 0, 0, 0];
+    let total = [0, 0, 0, 0];
+    let type;
+    for (let i in data) {
+        switch (data[i].task_type) {
+                case "legal" : { type = 0; break; }
+                case "vocal" : { type = 1; break; }
+                case "FFS" : { type = 2; break; }
+                case "vaginoplasty" : { type = 3; break; }
+            }
+            total[type]++;
+            if (data[i].task_completed) {
+                completed[type]++;
+            }
+    }
+
+    for (let i = 0; i < total.length; i++) {
+        progress.push(completed[i] / total[i]);
+    }
+    
+    return progress;
+}
+
+function drawProgressBars(progress) {
+    let width = document.querySelector("#progress-bars").clientWidth;
+    let progressBars = document.querySelectorAll(".progress-bar");
+    let labels = document.querySelectorAll(".progress-bar-label");
+    for (let i in progressBars) {
+        progressBars[i].width = width / 2;
+        progressBars[i].height = width / 20;
+        
+        progressBars[i].style = "grid-area: progressBar" + i;
+        labels[i].style = "grid-area: label" + i;
+        labels[i].innerHTML += "&nbsp;" + (Math.round(progress[i] * 10000) / 100) + "%";
+        
+        fillProgressBar(progressBars[i], Math.round(progressBars[i].width * progress[i]), i);
+    }
+}
+
+function fillProgressBar(bar, progress, palette) {
+    const increment = Math.round(bar.height / 2);
+    let color = 0;
+    const colors = [
+        ["darkorange", "orange", "white", "pink", "darkmagenta"],
+        ["blue", "magenta", "white", "magenta"],
+        ["magenta", "white"],
+        ["red", "orange", "yellow", "green", "blue", "purple"]
+    ]
+
+    let c = bar.getContext("2d");
+    for (let j = 0; j <= progress; j += (bar.height / 2)) {
+        c.fillStyle = colors[palette][color];
+        c.beginPath();
+        c.moveTo(j, 0);
+        c.lineTo(j + (bar.height / 2), 0);
+        c.lineTo(j + (bar.height / 4), bar.height);
+        c.lineTo(j - (bar.height / 4), bar.height);
+        c.lineTo(j, 0);
+        c.fill();
+
+        bar.innerHTML = Math.round(progress / bar.width * 100) + "%";
+        color++;
+        if (color >= colors[palette].length) {
+            color = 0;
+        }
+    }
+    c.clearRect(progress, 0, bar.width - progress, bar.height);
 }
