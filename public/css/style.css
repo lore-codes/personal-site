@@ -135,3 +135,27 @@ canvas {
 #transition-content h3 {
     text-align: center;
 }
+
+.clue-villain {
+    border: 15px solid red;
+}
+
+.clue-weapon {
+    border: 15px solid green;
+}
+
+.clue-lair {
+    border: 15px solid blue;
+}
+
+.clue-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 2em;
+}
+
+.clue-grid * {
+    aspect-ratio: 1 / 1;
+    border-radius: 2em;
+    font-size: 4em;
+}

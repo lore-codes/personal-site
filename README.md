@@ -1,10 +1,6 @@
 Development
 
-1. Start SSH tunnel
-
-ssh -i ~/Downloads/"Personal Site Key Pair".pem -L 5433:localhost:5432 ubuntu@3.143.243.28
-
-2. nodemon server.js
+1. nodemon server.js
 3. Develop
 
 Deploy
