@@ -26,7 +26,7 @@ function setButtons() {
         else {
             buttons[i].classList.add("clue-lair");
         }
-        buttons[i].innerHTML = name.toUpperCase().replace("-", " ");
+        buttons[i].innerHTML = name.toUpperCase().replace("-", " ") + "&#274c";
     }
 }
 
