@@ -136,29 +136,94 @@ canvas {
     text-align: center;
 }
 
-.clue-villain {
-    border: 15px solid red;
+.simulator {
+    border: 5px solid black;
+    border-radius: 2em;
+    justify-self: center;
+    padding: 2em;
 }
 
-.clue-weapon {
-    border: 15px solid green;
+#phone {
+    width: 15%;
+    aspect-ratio: 1 / 2;
 }
 
-.clue-lair {
-    border: 15px solid blue;
+#tablet {
+    width: 40%;
+    aspect-ratio: 3 / 1;
+}
+
+#table header {
+    font-size: 40%;
+}
+
+#phone header {
+    font-size: 15%;
+}
+
+#clue-grid-heading-area {
+    display: flex;
+    justify-content: space-between;
 }
 
 .clue-grid {
-    width: 75%;
-    display: grid;
-    grid-template-columns: auto auto auto;
+    flex: 1;
     gap: 2em;
 }
 
-.clue-grid * {
-    aspect-ratio: 1 / 1;
-    border-radius: 2em;
-    font-size: 4em;
-    background-color: white;
-    color: black;
+.clue-tile {
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    border: 3px solid black;
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+.clue-tile-state {
+    display: block;
+    font-size: 3em;
+}
+
+#clue-grid-heading {
+    text-transform: uppercase;
+    font-size: 3rem;
+}
+
+#clue-villains button {
+    color: #800000;
+    border-color: #800000;
+}
+
+#clue-weapons button {
+    color: #008000;
+    border-color: #008000;
+}
+
+#clue-lairs button {
+    color: #000080;
+    border-color: #000080;
+}
+
+.arrow-buttons {
+    border: 0;
+    font-size: 2em;
+}
+
+#clue-body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+#clue-body main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+#clue-body main > section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }

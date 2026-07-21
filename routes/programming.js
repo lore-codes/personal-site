@@ -13,4 +13,8 @@ router.get("/clue-scorecard", (req, res) => {
     res.render("programming/clue-scorecard");
 });
 
+router.get("/clue-scorecard-simulator", (req, res) => {
+    res.render("programming/clue-scorecard-simulator");
+});
+
 module.exports = router;
