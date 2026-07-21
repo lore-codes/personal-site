@@ -69,7 +69,7 @@ export class Clue {
     #showGrid() {
         for (let i = 0; i < this.#getGrids().length; i++) {
             if (this.#getVisibleGrid() == i) {
-                this.#getGrids()[i].getDiv().style = this.#getGrids()[i].setGrid(this.getWidth(), this.getHeight()) + this.#setDivHeight(i);
+                this.#getGrids()[i].getDiv().style = this.#getGrids()[i].setGrid(this.getWidth(), this.getHeight())/* + this.#setDivHeight(i)*/;
                 this.#setHeading(this.#getGrids()[i].getID().split("-")[1]);
             }
             else {
@@ -97,6 +97,6 @@ export class Clue {
     #setDivHeight(i) {
         return " height: calc(" 
         + this.#getGrids()[i].getDiv().clientHeight + "px + (100vw - "
-        + document.querySelector("main").clientHeight + "px;";
+        + document.querySelector("main").clientHeight + "px);";
     }
 }

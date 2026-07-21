@@ -72,10 +72,10 @@ export class Grid {
 
     setGrid(width, height) {
         if (width < height && this.getID() != "clue-lairs") {
-            return "display: grid; grid-template-columns: auto auto;";
+            return "display: grid; grid-template-columns: 50% 50%;";
         }
         else {
-            return "display: grid; grid-template-columns: auto auto auto;";
+            return "display: grid; grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);";
         }
     }
 }
