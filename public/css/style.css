@@ -175,7 +175,8 @@ canvas {
     width: calc(100% - 6px);
     height: calc(100% - 6px);
     border: 3px solid black;
-    font-size: 2em;
+    font-size: 3em;
+    text-transform: uppercase;
 }
 
 .clue-tile-state {
